@@ -14,7 +14,7 @@ class CreateAuthor extends Migration
     public function up()
     {
         Schema::create('author', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->timestamps();
         });
     }
