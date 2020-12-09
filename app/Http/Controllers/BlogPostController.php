@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blogpost;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -13,7 +14,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => BlogPost::all()]);
+        return view('posts.index', ['posts' => Blogpost::all()]);
     }
 
     /**
@@ -35,7 +36,7 @@ class BlogPostController extends Controller
     public function store(StorePost $request)
     {
         $validadetedData = $request->all();
-        $blogpost = BlogPost::create($validadetedData);
+        $blogpost = Blogpost::create($validadetedData);
         $request->session()->flash('status', 'Post criado com sucesso!');
 
         return redirect()->route('posts.show', ['post' => $blogpost->id]);
@@ -49,7 +50,7 @@ class BlogPostController extends Controller
      */
     public function show($id)
     {
-        return view('posts.show', ['post' => BlogPost::with('comments')->findOrFail($id)]);
+        return view('posts.show', ['post' => Blogpost::with('comments')->findOrFail($id)]);
     }
 
     /**
@@ -61,7 +62,7 @@ class BlogPostController extends Controller
     public function edit($id)
     {
         $post = findOrFail($id);
-        return view('post.edit' => ['post' => $post]);
+        return view('post.edit', ['post' => $post]);
     }
 
     /**
@@ -71,7 +72,7 @@ class BlogPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RStorePost $request, $id)
+    public function update(StorePost $request, $id)
     {
         $post = findOrFail($id);
         $validadetedData = $request->all();
@@ -91,7 +92,7 @@ class BlogPostController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $post = findOrFail($id)
+        $post = findOrFail($id);
         $post->delete();
         $request->session()->flash('status', 'Post excluído com sucesso!');
 
