@@ -52,6 +52,8 @@
                                 </li>
                             @endif
                         @else
+                            <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Posts</a>
+                            <a class="p-2 text-dark" href="{{ route('posts.create') }}">Novo Post</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -75,9 +77,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="container">
+            @if (session()->has('status'))
+                <p style="color: green">
+                    {{ session()->get('status') }}
+                </p>
+            @endif
             @yield('content')
-        </main>
+        </div>
     </div>
 </body>
 </html>

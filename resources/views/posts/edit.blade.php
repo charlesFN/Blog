@@ -1,8 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
-@section('titulo', 'Blog - Editar Post')
+<title>Blog - Editar Post</title>
 
-@section('menu')
+@section('content')
     <form method="POST" action="{{ route('posts.update', ['post'=>$post->id]) }}">
         @csrf
         @method('PUT')

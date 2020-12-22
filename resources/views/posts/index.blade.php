@@ -1,8 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
-@section('titulo', 'Blog - Todos os Posts')
+<title>Blog - Todos os Posts</title>
 
-@section('menu')
+@section('content')
     <h2>Posts</h2>
     <div class="card-columns">
         @forelse($posts as $post)

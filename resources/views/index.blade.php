@@ -1,7 +1,7 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
-@section('titulo', 'Blog - Página Inicial')
+<title>Blog - Página Inicial</title>
 
-@section('menu')
+@section('content')
     <h2>Seja Bem-Vindo ao Nosso Blog</h2>
 @endsection

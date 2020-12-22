@@ -1,8 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
-@section('titulo', 'Blog - Novo Post')
+<title>Blog - Novo Post</title>
 
-@section('menu')
+@section('content')
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
 
