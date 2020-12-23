@@ -62,7 +62,7 @@ class BlogPostController extends Controller
      */
     public function edit($id)
     {
-        $post = find($id);
+        $post = findOrFail($id);
         return view('post.edit', ['post' => $post]);
     }
 
@@ -75,7 +75,7 @@ class BlogPostController extends Controller
      */
     public function update(StorePost $request, $id)
     {
-        $post = find($id);
+        $post = findOrFail($id);
         $validadetedData = $request->all();
 
         $post->fill($validadetedData);
@@ -93,7 +93,7 @@ class BlogPostController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $post = find($id);
+        $post = findOrFail($id);
         $post->delete();
         $request->session()->flash('status', 'Post excluído com sucesso!');
 
